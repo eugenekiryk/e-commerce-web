@@ -1,0 +1,26 @@
+.images-thumbnail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  max-width: 100%;
+}
+
+.image-thumbnail {
+  flex: 1;
+  border-radius: 10px;
+  max-width: 20%;
+}
+
+.image-thumbnail:focus,
+.image-thumbnail:hover {
+  border: 3px solid hsl(26, 100%, 55%);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .images-thumbnail-wrapper {
+    display: none;
+  }
+}
