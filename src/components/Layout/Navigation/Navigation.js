@@ -81,7 +81,6 @@ function Navigation() {
 					</div>
 				</div>
 			</div>
-			<hr />
 			{
 				showCart ? <Cart /> : null
 			}
