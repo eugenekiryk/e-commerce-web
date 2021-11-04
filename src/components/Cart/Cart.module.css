@@ -6,9 +6,11 @@
   background-color: white;
   border: transparent;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.8rem hsl(220, 14%, 75%);
-  min-height: 12rem;
+  box-shadow: 0 0.6rem 2rem hsl(220, 14%, 75%);
+  min-height: 14rem;
   z-index: 1;
+  position: absolute;
+  top: 100px;
 }
 
 .cart-head {
@@ -29,6 +31,7 @@
   .cart-wrapper {
     align-self: center;
     width: calc(100vw - 40%);
+    box-shadow: none;
   }
 }
 
