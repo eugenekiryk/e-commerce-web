@@ -1,8 +1,11 @@
 # E-Commerce product page
 
-Dummy e-commerce product page.\
-Implemented by me, [Eugene Kiryk](https://github.com/eugenekiryk).\
-Design: [Frontend Mentor](https://www.frontendmentor.io).\
+Dummy e-commerce product page.
+
+Implemented by me, [Eugene Kiryk](https://github.com/eugenekiryk).
+
+Design: [Frontend Mentor](https://www.frontendmentor.io).
+
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Get started
