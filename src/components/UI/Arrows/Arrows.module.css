@@ -1,0 +1,17 @@
+.icon-prev, .icon-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 50%;
+  padding: 1.5rem;
+  background-color: white;
+  cursor: pointer;
+  
+  width: 30px;
+  height: 30px;
+}
+
+.icon-prev img, .icon-next img {
+  width: 10px;
+}

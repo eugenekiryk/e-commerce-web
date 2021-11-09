@@ -87,6 +87,59 @@
   flex-grow: 1;
 }
 
+.modal-image,
+.modal-image img {
+  width: 100%;
+}
+
+.modal-image img {
+  height: auto;
+  border-radius: 10px;
+}
+
+.modal-close {
+  width: 1rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  filter: 
+    invert(54%) 
+    sepia(38%) 
+    saturate(2121%) 
+    hue-rotate(347deg) 
+    brightness(101%) 
+    contrast(101%)
+  ;
+}
+
+.prev, .next,
+.prev-mobile,
+.next-mobile {
+  top: 40%;
+}
+
+.prev {
+  left: -1.5rem;
+}
+
+.next {
+  right: -1.5rem;
+}
+
+.images-mobile {
+  position: relative;
+}
+
+.prev-mobile {
+  left: 5%;
+}
+
+.next-mobile {
+  right: 5%;
+}
+
 @media (max-width: 1024px) {
   .product-wrapper {
     flex-direction: column;
