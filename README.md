@@ -4,7 +4,7 @@ Dummy e-commerce product page.
 
 Implemented by me, [Eugene Kiryk](https://github.com/eugenekiryk).
 
-Design: [Frontend Mentor](https://www.frontendmentor.io).
+Design and assets: [Frontend Mentor](https://www.frontendmentor.io).
 
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -26,4 +26,4 @@ Builds the app for production to the `build` folder.\
 - HTML
 - CSS Modules
 - JavaScript
-- React.js: Hooks
+- React.js: Hooks, Context API
