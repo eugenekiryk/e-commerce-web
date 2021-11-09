@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 
+import AppContext from '../../../store/context';
 import Logo from '../../../assets/logo.svg';
 import CartIcon from '../../../assets/icon-cart.svg';
 import Cart from '../../Cart/Cart';
@@ -11,10 +12,12 @@ import NavLinks from './NavLinks';
 import classes from './Navigation.module.css';
 
 function Navigation() {
+	const ctx = useContext(AppContext);
+
 	const [showDrawer, setShowDrawer] = useState(false);
 	const [showCart, setShowCart] = useState(false);
-	const [windowWidth, setWindowWidth] = useState(null);
-	const mobileNav = windowWidth <= 1024;
+	
+	const mobileNav = ctx.windowWidth <= 1024;
 
 	const showDrawerHandler = () => {
 		setShowDrawer(true);
@@ -24,29 +27,9 @@ function Navigation() {
 		setShowDrawer(false);
 	}
 
-	// const showCartHandler = () => {
-	// 	setShowCart(true);
-	// }
-
 	const toggleCartHandler = () => {
 		setShowCart(!showCart);
 	}
-
-	const windowResizeHandler = () => {
-		setWindowWidth(window.innerWidth);
-	}
-
-	useEffect(() => {
-		setWindowWidth(window.innerWidth);
-	}, []);
-
-	useEffect(() => {
-		window.addEventListener('resize', windowResizeHandler);
-
-		return () => {
-			window.removeEventListener('resize', windowResizeHandler);
-		}
-	}, [windowWidth]);
 
 	return (
 		<header className={classes.header}>
