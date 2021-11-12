@@ -1,8 +1,8 @@
 import classes from './Button.module.css';
 
-function Button({ children, disabled, onClick }) {
+function Button({ className, children, disabled, onClick }) {
 	return (
-		<button className={classes.button} disabled={disabled} onClick={onClick}>
+		<button className={`${classes.button} ${className}`} disabled={disabled} onClick={onClick}>
 			{children}
 		</button>
 	);
