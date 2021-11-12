@@ -150,6 +150,7 @@
   .product-images {
     padding: 0;
     max-width: 100%;
+    min-width: 0;
   }
 
   .product-description {
