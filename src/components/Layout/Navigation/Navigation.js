@@ -1,6 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, Fragment } from 'react';
 
 import AppContext from '../../../store/context';
+import Backdrop from '../../UI/Backdrop/Backdrop';
 import Logo from '../../../assets/logo.svg';
 import CartIcon from '../../../assets/icon-cart.svg';
 import Cart from '../../Cart/Cart';
@@ -65,7 +66,12 @@ function Navigation() {
 				</div>
 			</div>
 			{
-				showCart ? <Cart /> : null
+				showCart ? (
+					<Fragment>
+						<Backdrop transparent onClick={toggleCartHandler} />
+						<Cart />
+					</Fragment>
+				) : null
 			}
 		</header>
 	);
