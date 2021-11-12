@@ -18,6 +18,19 @@ function Product() {
 
 	const [showModal, setShowModal] = useState(false);
 	const [currentImage, setCurrentImage] = useState(images[0]);
+	const [productQuantity, setProductQuantity] = useState(0);
+
+	const productInfo = {
+		id: 'product1',
+		title: 'Fall Limited Edition Sneakers',
+		price: 125,
+		description: `
+			These low-profile sneakers are your perfect casual wear companion. 
+			Featuring a durable rubber outer sole, 
+			they'll withstand everything the weather can offer.
+		`,
+		image: images[0].src
+	};
 
 	const openImageHandler = (e) => {
 		const image = getCurrentImage(e, images);
@@ -49,6 +62,34 @@ function Product() {
     setShowModal(false);
   }
 
+	const quantityHandler = (quantity) => {
+		setProductQuantity(prevQuantity => {
+			if (prevQuantity === 0 && quantity < 0) {
+				return prevQuantity;
+			} else {
+				return prevQuantity + quantity;
+			}
+		});
+	}
+
+	const addToCartHandler = () => {
+		if (productQuantity === 0) {
+			return;
+		}
+
+		const totalPrice = productInfo.price * productQuantity;
+		ctx.onAddToCart(
+			productInfo.id, 
+			productInfo.title,
+			productQuantity, 
+			productInfo.price, 
+			totalPrice, 
+			productInfo.image
+		);
+
+		setProductQuantity(0);
+	}
+
 	return (
 		<Fragment>
 			<div className={classes['product-wrapper']}>
@@ -77,10 +118,9 @@ function Product() {
 				</div>
 				<div className={classes['product-description']}>
 					<p className={classes['company-title']}>SNEAKER COMPANY</p>
-					<h1 className={classes['product-title']}>Fall Limited Edition Sneakers</h1>
+					<h1 className={classes['product-title']}>{productInfo.title}</h1>
 					<p>
-						These low-profile sneakers are your perfect casual wear companion. 
-						Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.
+						{productInfo.description}
 					</p>
 					<div className={classes['price-wrapper']}>
 						<h2 className={classes['product-price']}>
@@ -89,10 +129,10 @@ function Product() {
 						<p className={classes['price-before']}>$250.00</p>
 					</div>
 					<div className={classes['product-controls']}>
-						<QuantityControls>
-							0
+						<QuantityControls onQuantityChange={quantityHandler}>
+							{productQuantity}
 						</QuantityControls>
-						<Button>
+						<Button onClick={addToCartHandler}>
 							<span>
 								<img className={classes['cart-icon']} src={icons.IconCart} alt="cart-icon" />
 							</span>
