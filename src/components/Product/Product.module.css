@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 2rem;
 }
 
 .product-images {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  min-width: 400px;
 }
 
 .product-description,
