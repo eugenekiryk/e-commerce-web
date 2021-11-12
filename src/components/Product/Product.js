@@ -6,7 +6,7 @@ import AppContext from '../../store/context';
 import Button from '../UI/Button/Button';
 import ImagesThumbnail from './ImagesThumbnail/ImagesThumbnail';
 import Modal from '../UI/Modal/Modal';
-import QuantityButtons from '../UI/QuantityButtons/QuantityButtons';
+import QuantityControls from '../UI/QuantityControls/QuantityControls';
 
 import classes from './Product.module.css';
 
@@ -89,11 +89,9 @@ function Product() {
 						<p className={classes['price-before']}>$250.00</p>
 					</div>
 					<div className={classes['product-controls']}>
-						<QuantityButtons>
-							<img src={icons.IconMinus} alt="minus" />
+						<QuantityControls>
 							0
-							<img src={icons.IconPlus} alt="plus" />
-						</QuantityButtons>
+						</QuantityControls>
 						<Button>
 							<span>
 								<img className={classes['cart-icon']} src={icons.IconCart} alt="cart-icon" />
