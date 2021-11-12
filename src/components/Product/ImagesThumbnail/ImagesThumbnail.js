@@ -6,13 +6,14 @@ function ImagesThumbnail({ showModal, images, onClick }) {
   return (
     <div className={classes['images-thumbnail-wrapper']}>
       {
-        images.map((image, idx) => idx !== 0 && 
+        images.map(image =>  
           <img 
-            key={image.alt}
+            key={image.id}
+            id={image.id}
             className={classes['image-thumbnail']} 
-            alt={image.alt} 
+            alt={image.id} 
             src={image.src}
-            onClick={!showModal ? onClick : null} 
+            onClick={onClick} 
           />
         )
       }

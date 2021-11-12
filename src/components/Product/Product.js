@@ -1,30 +1,51 @@
 import { Fragment, useState, useContext } from 'react';
 
+import { icons, images } from '../../assets';
+import { Previous, Next } from '../UI/Arrows/Arrows';
 import AppContext from '../../store/context';
 import Button from '../UI/Button/Button';
 import ImagesThumbnail from './ImagesThumbnail/ImagesThumbnail';
-import CartIcon from '../../assets/icon-cart.svg';
-import IconClose from '../../assets/icon-close.svg';
-import IconPlus from '../../assets/icon-plus.svg';
-import IconMinus from '../../assets/icon-minus.svg';
-import { Previous, Next } from '../UI/Arrows/Arrows';
 import Modal from '../UI/Modal/Modal';
-import { images } from './images';
+import QuantityButtons from '../UI/QuantityButtons/QuantityButtons';
 
 import classes from './Product.module.css';
-import QuantityButtons from '../UI/QuantityButtons/QuantityButtons';
+
+const getCurrentImage = (e, images) => images.find(image => image.id === e.target.id);
 
 function Product() {
 	const ctx = useContext(AppContext);
 	const mobile = ctx.windowWidth <= 1024;
 
 	const [showModal, setShowModal] = useState(false);
+	const [currentImage, setCurrentImage] = useState(images[0]);
 
-  const showModalHandler = () => {
+	const openImageHandler = (e) => {
+		const image = getCurrentImage(e, images);
+		setCurrentImage(image);
+	}
+
+	const changeImageHandler = (idx) => {
+		const currentIdx = images.findIndex(image => image.id === currentImage.id);
+		const sumIdx = currentIdx + idx;
+		const newImage = images[sumIdx];
+
+		if (sumIdx >= images.length) {
+			setCurrentImage(images[0]);
+		} else if (sumIdx < 0) {
+			setCurrentImage(images[images.length - 1]);
+		} else {
+			setCurrentImage(newImage);
+		}
+	};
+
+  const showModalHandler = (e) => {
+		const image = getCurrentImage(e, images);
+		setCurrentImage(image);
     setShowModal(true);
   }
 
   const closeModalHandler = () => {
+		setCurrentImage(images[0]);
     setShowModal(false);
   }
 
@@ -35,17 +56,23 @@ function Product() {
 					{
 						mobile ? (
 							<div className={classes['images-mobile']}>
-								<Previous className={classes['prev-mobile']} />
-								<img className={classes['main-image']} src={images[0].src} alt="img1" />
-								<Next className={classes['next-mobile']} />
+								<Previous 
+									className={classes['prev-mobile']}
+									onClick={() => changeImageHandler(-1)}
+								/>
+								<img className={classes['main-image']} src={currentImage.src} alt={currentImage.id} />
+								<Next 
+									className={classes['next-mobile']}
+									onClick={() => changeImageHandler(1)} 
+								/>
 							</div>
 						) : 
-							<img className={classes['main-image']} src={images[0].src} alt="img1" />
+							<img className={classes['main-image']} src={images[0].src} alt={currentImage.id} />
 					}
 					<ImagesThumbnail 
 						showModal={showModal} 
 						images={images} 
-						onClick={showModalHandler} 
+						onClick={(e) => showModalHandler(e)} 
 					/>
 				</div>
 				<div className={classes['product-description']}>
@@ -63,13 +90,13 @@ function Product() {
 					</div>
 					<div className={classes['product-controls']}>
 						<QuantityButtons>
-							<img src={IconMinus} alt="minus" />
+							<img src={icons.IconMinus} alt="minus" />
 							0
-							<img src={IconPlus} alt="plus" />
+							<img src={icons.IconPlus} alt="plus" />
 						</QuantityButtons>
 						<Button>
 							<span>
-								<img className={classes['cart-icon']} src={CartIcon} alt="cart-icon" />
+								<img className={classes['cart-icon']} src={icons.IconCart} alt="cart-icon" />
 							</span>
 							Add To Cart
 						</Button>
@@ -81,16 +108,22 @@ function Product() {
 					<Modal onClose={closeModalHandler}>
 						<img 
 							className={classes['modal-close']} 
-							src={IconClose} 
+							src={icons.IconClose} 
 							alt="close"
 							onClick={closeModalHandler} 
 						/>
-						<Previous className={classes.prev} />
+						<Previous 
+							className={classes.prev}
+							onClick={() => changeImageHandler(-1)} 
+						/>
 						<div className={classes['modal-image']}>
-							<img src={images[0].src} alt="img1" />
+							<img src={currentImage.src} alt={currentImage.id} />
 						</div>
-						<Next className={classes.next} />
-						<ImagesThumbnail images={images} />
+						<Next 
+							className={classes.next}
+							onClick={() => changeImageHandler(1)}
+						 />
+						<ImagesThumbnail images={images} onClick={(e) => openImageHandler(e)} />
 					</Modal>
 				)
 			}
