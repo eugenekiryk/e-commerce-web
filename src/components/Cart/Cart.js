@@ -11,14 +11,17 @@ function Cart() {
     ctx.onRemoveFromCart(id);
   }
 
+  const cartEmpty = ctx.cartItems.length === 0;
+
   return (
     <div className={classes['cart-wrapper']}>
       <div className={classes['cart-head']}>
         <p>Cart</p>
       </div>
-      <div className={classes['cart-content']}>
+      <div 
+        className={classes['cart-content']}>
         {
-          ctx.cartItems.length === 0 ? 
+          cartEmpty ? 
             "Your cart is empty." 
           : 
           <Fragment>

@@ -57,7 +57,11 @@ function Navigation() {
 					}
 				</div>
 				<div className={classes['nav-icons']}>
-					<div>
+					<div className={classes['cart-icon']}>
+						{
+							ctx.cartQuantity !== 0 && 
+							<p className={classes['cart-quantity']}>{ctx.cartQuantity}</p>
+						}
 						<img src={CartIcon} alt="cart" onClick={toggleCartHandler} />
 					</div>
 					<div className={classes.avatar}>

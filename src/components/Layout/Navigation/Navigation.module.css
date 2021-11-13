@@ -70,6 +70,24 @@ hr {
 	opacity: 0.2;
 }
 
+.cart-icon {
+  position: relative;
+}
+
+.cart-quantity {
+	background-color: hsl(26, 100%, 55%);
+	color: white;
+	position: absolute;
+	bottom: 15px;
+	left: 10px;
+	padding: 2px 5px;
+	width: 25px;
+  border-radius: 15px;
+	font-size: .7rem;
+	font-weight: 700;
+	text-align: center;
+}
+
 @media (max-width: 1024px) {
 	.header-wrapper {
 		padding: 1rem;
