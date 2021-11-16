@@ -136,7 +136,9 @@ function Product() {
           </div>
           <div className={classes['product-controls']}>
             <QuantityControls onQuantityChange={quantityHandler}>
-              {productQuantity}
+              <div className={classes.quantity}>
+                {productQuantity}
+              </div>
             </QuantityControls>
             <Button onClick={addToCartHandler}>
               <span>

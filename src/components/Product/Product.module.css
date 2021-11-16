@@ -136,6 +136,11 @@
   right: 5%;
 }
 
+.quantity {
+  min-width: 20px;
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   .product-wrapper {
     flex-direction: column;
