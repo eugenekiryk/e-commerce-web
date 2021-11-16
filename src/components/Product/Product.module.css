@@ -19,6 +19,7 @@
 
 .main-image {
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .product-description {
@@ -104,17 +105,12 @@
 }
 
 .modal-close:hover {
-  filter: 
-    invert(54%) 
-    sepia(38%) 
-    saturate(2121%) 
-    hue-rotate(347deg) 
-    brightness(101%) 
-    contrast(101%)
-  ;
+  filter: invert(54%) sepia(38%) saturate(2121%) hue-rotate(347deg)
+    brightness(101%) contrast(101%);
 }
 
-.prev, .next,
+.prev,
+.next,
 .prev-mobile,
 .next-mobile {
   top: 40%;
@@ -161,6 +157,7 @@
     border-radius: 0;
     width: 100%;
     height: auto;
+    cursor: default;
   }
 
   .price-wrapper {

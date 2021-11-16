@@ -108,12 +108,18 @@ function Product() {
                 />
               </div>
             ) :
-              <img className={classes['main-image']} src={images[0].src} alt={currentImage.id} />
+              <img
+                className={classes['main-image']}
+                id={currentImage.id}
+                onClick={(!showModal && !mobile) ? showModalHandler : null}
+                src={images[0].src}
+                alt={currentImage.id}
+              />
           }
           <ImagesThumbnail
             showModal={showModal}
             images={images}
-            onClick={(e) => showModalHandler(e)}
+            onClick={showModalHandler}
           />
         </div>
         <div className={classes['product-description']}>
@@ -161,7 +167,7 @@ function Product() {
               className={classes.next}
               onClick={() => changeImageHandler(1)}
             />
-            <ImagesThumbnail images={images} onClick={(e) => openImageHandler(e)} />
+            <ImagesThumbnail images={images} onClick={openImageHandler} />
           </Modal>
         )
       }
